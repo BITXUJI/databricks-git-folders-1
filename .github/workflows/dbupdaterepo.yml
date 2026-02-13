@@ -13,6 +13,13 @@ jobs:
 
       - name: Install Databricks CLI
         uses: databricks/setup-cli@main
+        
+      - name: Remote list Prod Repo
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          databricks repos list
 
       - name: Remote update Prod Repo
         env:
