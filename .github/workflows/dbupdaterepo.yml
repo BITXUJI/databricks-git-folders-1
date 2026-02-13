@@ -1,0 +1,23 @@
+on:
+  push
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - name: Install Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Remote update Prod Repo
+        env:
+          DATABRICKS_HOST: $
+          DATABRICKS_TOKEN: $
+          DATABRICKS_USER_EMAIL: $
+        run: |
+          databricks repos update "/Workspace/Users/${DATABRICKS_USER_EMAIL}/GitHub Folders/Prod/databricks-git-folders-1" --branch main
