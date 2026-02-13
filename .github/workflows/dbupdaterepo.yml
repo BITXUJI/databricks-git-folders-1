@@ -13,18 +13,11 @@ jobs:
 
       - name: Install Databricks CLI
         uses: databricks/setup-cli@main
-        
-      - name: Remote list Prod Repo
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-        run: |
-          databricks repos list
 
       - name: Remote update Prod Repo
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_USER_EMAIL: ${{ secrets.DATABRICKS_USER_EMAIL }}
         run: |
-          databricks repos list
-          databricks repos update "/Workspace/Users/bitxuji@gmail.com/GitHub Folders/Prod/databricks-git-folders-1" --branch main
+          databricks repos update "/Workspace/Users/${DATABRICKS_USER_EMAIL}/Github Folders/Prod/databricks-git-folders-1" --branch main
