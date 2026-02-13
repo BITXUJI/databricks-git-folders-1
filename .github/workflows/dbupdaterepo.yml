@@ -18,6 +18,5 @@ jobs:
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-          DATABRICKS_USER_EMAIL: ${{ secrets.DATABRICKS_USER_EMAIL }}
         run: |
-          databricks repos update "/Workspace/Users/${DATABRICKS_USER_EMAIL}/GitHub Folders/Prod/databricks-git-folders-1" --branch main
+          databricks repos update "/Workspace/Users/bitxuji@gmail.com/GitHub Folders/Prod/databricks-git-folders-1" --branch main
